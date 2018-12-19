@@ -1,6 +1,6 @@
 class SortingAlgorithms {
    public static void main(String []args){
-        int[] input = {100, 180, 30, 90, 40, 50, 20};
+        int[] input = {100, 180, 30, 90, 50, 50, 20};
         
         QuickSort quicksort = new QuickSort();
         quicksort.sort(input,0,6);
@@ -19,7 +19,7 @@ class QuickSort{
           sort(arr,low,mid-1);
 
        if(high > mid)
-          sort(arr,mid,high);
+          sort(arr,mid+1,high);
     }
     
     int parition(int input[], int low, int high){
@@ -29,9 +29,9 @@ class QuickSort{
          int rightPtr = high;
          int pivot =  input[(low+high) / 2];
        
-         while(leftPtr <= rightPtr){
+         while(leftPtr < rightPtr){
 
-            while(input[leftPtr] < pivot){
+            while(input[leftPtr] <= pivot && leftPtr < rightPtr){
                   leftPtr++;
               }
                 
@@ -41,13 +41,11 @@ class QuickSort{
                 
             if(leftPtr <= rightPtr)
                   swap(input,leftPtr,rightPtr);
-                  
-            leftPtr++;
-            rightPtr--;    
-            
+           
         
             }
-            return leftPtr;
+            swap(input,rightPtr,((low+high) / 2));
+            return rightPtr;
         
     }
     public void swap(int input[], int leftPtr, int rightPtr){
