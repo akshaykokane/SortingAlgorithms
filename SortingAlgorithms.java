@@ -89,7 +89,7 @@ class MergeSort{
 
     if(low < high){
 
-      int mid = low + high / 2;
+      int mid = (low + high) / 2;
 
       sort(input, low, mid);
       sort(input,mid+1, high);
@@ -109,35 +109,34 @@ class MergeSort{
     int[] auxArray2 = new int[lengthAuxArray2];
 
     //Copy the input elements into auxilary arrays
-    int j = 0;
-    for(int i = low;  i <= mid ; i++ )  
-        auxArray1[j++] = input[i];
+   
+    for(int i = 0;  i < lengthAuxArray1 ; i++ )  
+        auxArray1[i] = input[i+low];
 
-    j = 0;
-    for(int i = mid+1; i <= high ; i++ )  
-        auxArray2[j++] = input[i];
+  
+    for(int i = 0; i < lengthAuxArray2 ; i++ )  
+        auxArray2[i] = input[i+mid+1];
 
-    int i = 0;j = 0;
+    int i = 0;int j = 0;
 
     //compare elements and rewrite in input array
     while(i < lengthAuxArray1 && j < lengthAuxArray2){
 
-      if(auxArray1[i] < auxArray2[j])
-        input[low++] = auxArray1[i];
+      if(auxArray1[i] <= auxArray2[j])
+        input[low++] = auxArray1[i++];
       else      
-        input[low++] = auxArray2[j];
-      i++;
-      j++;
+        input[low++] = auxArray2[j++];
+    
 
     }
 
     //copy remaning elements of auxArray1 into input
     while(i < lengthAuxArray1)
-      input[low++] = auxArray1[i];
+      input[low++] = auxArray1[i++];
 
     //copy remaning elements of auxArray2 into input
-    while(j < lengthAuxArray2)
-      input[low++] = auxArray2[j];
+    while(j < lengthAuxArray2-1)
+      input[low++] = auxArray2[j++];
 
   }
     
