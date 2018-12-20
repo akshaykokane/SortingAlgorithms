@@ -1,9 +1,11 @@
+import java.util.Scanner;
 class SortingAlgorithms {
    public static void main(String []args){
         int[] input = {100, 180, 30, 40, 50, 80, 20};
         
-        System.out.println("\nEnter which algorithm to use? 1) QuickSort 2) Merge Sort 3) Bubble Sort");
-        int choice = 4;
+        System.out.println("\nEnter which algorithm to use? 1) QuickSort 2) Merge Sort 3) Bubble Sort 4) Insertion Sort 5) Selection Sort");
+       Scanner s= new Scanner(System.in);
+       int choice = s.nextInt();
 
         switch (choice){
           
@@ -41,6 +43,15 @@ class SortingAlgorithms {
               System.out.print("\n\nSorting using InsertionSort..\n");
               InsertionSort insertionSort = new InsertionSort();
               insertionSort.sort(input);
+
+              for(int i = 0; i < input.length;i++)
+                  System.out.print(input[i]+" ,");
+              
+              break;
+        case 5: 
+              System.out.print("\n\nSorting using Selection Sort..\n");
+              SelectionSort selectionSort = new SelectionSort();
+              selectionSort.sort(input);
 
               for(int i = 0; i < input.length;i++)
                   System.out.print(input[i]+" ,");
@@ -203,6 +214,16 @@ class SelectionSort{
 
     }
   }
+
+  public void swap(int input[], int leftPtr, int rightPtr){
+        
+        int temp=input[leftPtr];
+        input[leftPtr] = input[rightPtr];
+        input[rightPtr] = temp;
+        
+    }
+
+}
 
 class BubbleSort{
 
