@@ -1,32 +1,53 @@
 class SortingAlgorithms {
    public static void main(String []args){
-        int[] input = {100, 180, 30, 90, 50, 50, 20};
+        int[] input = {100, 180, 30, 40, 50, 80, 20};
         
-        System.out.println("\nEnter which algorithm to use? 1) QuickSort 2)Merge Sort")
-        int choice = 2;
+        System.out.println("\nEnter which algorithm to use? 1) QuickSort 2) Merge Sort 3) Bubble Sort");
+        int choice = 4;
 
         switch (choice){
           
           case 1:
-                System.out.print("Sorting using QuickSort..");
+                System.out.print("Sorting using QuickSort..\n");
                 QuickSort quicksort = new QuickSort();
                 quicksort.sort(input,0,6);
 
                 for(int i = 0; i < input.length;i++)
-                  System.out.print(input[i]+" ,");
+                    System.out.print(input[i]+" ,");
                 break;
-          case 2:
-              System.out.print("\n\nSorting using MergeSort..");
+        
+
+        case 2: 
+              System.out.print("\n\nSorting using MergeSort..\n");
               MergeSort mergesort = new MergeSort();
               mergesort.sort(input,0,6);
 
               for(int i = 0; i < input.length;i++)
                   System.out.print(input[i]+" ,");
+              
+              break;
 
+         case 3: 
+              System.out.print("\n\nSorting using BubbleSort..\n");
+              BubbleSort bubbleSort = new BubbleSort();
+              bubbleSort.sort(input);
+
+              for(int i = 0; i < input.length;i++)
+                  System.out.print(input[i]+" ,");
+              
+              break;
+
+        case 4: 
+              System.out.print("\n\nSorting using InsertionSort..\n");
+              InsertionSort insertionSort = new InsertionSort();
+              insertionSort.sort(input);
+
+              for(int i = 0; i < input.length;i++)
+                  System.out.print(input[i]+" ,");
+              
+              break;
         }
         
-
-       
        
      }
 }
@@ -144,6 +165,24 @@ class MergeSort{
 }
 
 class InsertionSort{
+
+  public void sort(int input[]){
+
+    for(int i = 1; i < input.length; i++){
+
+        int key = input[i];
+        int j = i-1;
+
+        while(j >= 0 && input[j] > key){
+            input[j+1] = input[j];
+            j--;
+
+        }
+        input[j+1] = key;
+
+    }
+
+  }
     
 }
 
@@ -153,5 +192,33 @@ class SelectionSort{
 }
 
 class BubbleSort{
+
+
+  public void sort(int input[]){
+      int n = input.length;
+      boolean swapped = false;
+      for(int i = 0; i < n ; i++){
+          swapped = false;
+          for(int j = 0; j < (n - i-1); j++){
+              if(input[j] > input[j+1]){
+                  swap(input,j,j+1);
+                  swapped = true;
+              }
+            }
+          if(swapped == false)
+            break;
+
+      }
+
+
+
+  }
+  public void swap(int input[], int leftPtr, int rightPtr){
+        
+        int temp=input[leftPtr];
+        input[leftPtr] = input[rightPtr];
+        input[rightPtr] = temp;
+        
+  }
     
 }
