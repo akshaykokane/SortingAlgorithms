@@ -187,9 +187,22 @@ class InsertionSort{
 }
 
 class SelectionSort{
-    
-    
-}
+
+  public void sort(int input[]){
+    int length = input.length;
+
+    for(int i = 0; i < length-1 ; i++){
+      
+      int min_index = i;
+      for(int j = i+1; j < length; j++)
+        if(input[j] < input[min_index])
+            min_index = j;
+      
+      swap(input, i, min_index);
+      
+
+    }
+  }
 
 class BubbleSort{
 
