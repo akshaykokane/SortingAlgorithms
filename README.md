@@ -1,7 +1,10 @@
 # SortingAlgorithms
-QuickSort. MergeSort, InsertionSort, SelectionSort, BubbleSort Recursive implementation in Java
+1. QuickSort
+2. MergeSort
+3. InsertionSort
+4. SelectionSort
+5. BubbleSort 
 
 # Implementation
-
-This is the implementation of all sorting algorithm in Java
-
+1) Execute the Java Code 
+2) Select the algorithm for implementation 
